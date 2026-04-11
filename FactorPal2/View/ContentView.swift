@@ -44,6 +44,45 @@ struct ContentView: View {
                 TextField("", text: $factorGuess2)
                 Text(")")
             }
+            ZStack {
+                Button(action: {
+                    answersChecked = true
+                    guard let factorTry1 = Int(factorGuess1) else {
+                        answer1Correct = false
+                        return
+                    }
+                    guard let factorTry2 = Int(factorGuess2) else {
+                        answer2Correct = false
+                        return
+                    }
+                    if factorTry1 == factorR {
+                        answer1Correct = true
+                        if factorTry2 == factorS {
+                            answer2Correct = true
+                        } else {
+                            answer2Correct = false
+                        }
+                    } else if factorTry1 == factorS {
+                        answer1Correct = true
+                        if factorTry2 == factorR {
+                            answer2Correct = true
+                        } else {
+                            answer2Correct = false
+                        }
+                    } else {
+                        answer1Correct = false
+                        if factorTry2 == factorR {
+                            answer2Correct = true
+                        } else if factorTry2 == factorS {
+                            answer2Correct = true
+                        } else {
+                            answer2Correct = false
+                        }
+                    }
+                }, label: {
+                    
+                })
+            }
         }
     }
 }
