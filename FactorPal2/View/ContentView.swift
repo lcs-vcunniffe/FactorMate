@@ -8,7 +8,7 @@
 import SwiftUI
 import LaTeXSwiftUI
 
-struct QuestionsView: View {
+struct ContentView: View {
     //MARK: Stored properties
     @State var factorGuess1: String = ""
     @State var factorGuess2: String = ""
@@ -39,5 +39,5 @@ struct QuestionsView: View {
 }
 
 #Preview {
-    QuestionsView()
+    ContentView()
 }
