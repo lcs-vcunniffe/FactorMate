@@ -17,8 +17,12 @@ import Foundation
 import Foundation
 
 struct Equation {
+    let id = UUID()
     var factorR: Int
     var factorS: Int
+    var factorGuess1: String
+    var factorGuess2: String
+    var answersCorrect: Bool
     
     var coefficientB: Int {
         return factorR + factorS

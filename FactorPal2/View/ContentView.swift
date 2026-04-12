@@ -33,10 +33,15 @@ struct ContentView: View {
     @State var pastAnswers: [Equation] = []
     
     //MARK: Computed properties
+    var overallResponseCorrect: Bool {
+        return answer1Correct && answer2Correct
+    }
+    
     var body: some View {
         VStack {
             Text("Factor:")
                 .multilineTextAlignment(.leading)
+                .font(Font.system(size: 26))
             LaTeX("$x^2+\(coefficientB)x+\(constantC)$")
             HStack {
                 Text("(x+")
@@ -48,7 +53,6 @@ struct ContentView: View {
             }
             ZStack {
                 Button(action: {
-                    answersChecked = true
                     guard let factorTry1 = Int(factorGuess1) else {
                         answer1Correct = false
                         answersChecked = false
@@ -61,6 +65,7 @@ struct ContentView: View {
                         errorMessage = "Please put numbers in both fields."
                         return
                     }
+                    answersChecked = true
                     if factorTry1 == factorR {
                         answer1Correct = true
                         errorMessage = ""
@@ -88,6 +93,8 @@ struct ContentView: View {
                             answer2Correct = false
                         }
                     }
+                    
+                    saveAttempt()
                 }, label: {
                     Text("Check answers")
                         .background(Color.blue, in: Capsule())
@@ -112,6 +119,18 @@ struct ContentView: View {
                     .padding()
             }
         }
+    }
+    
+    //MARK: Functions
+    func saveAttempt() {
+        let lastAttempt = Equation(
+            factorR: factorR,
+            factorS: factorS,
+            factorGuess1: factorGuess1,
+            factorGuess2: factorGuess2,
+            answersCorrect: overallResponseCorrect
+        )
+        pastAnswers.insert(lastAttempt, at: 0)
     }
 }
 
