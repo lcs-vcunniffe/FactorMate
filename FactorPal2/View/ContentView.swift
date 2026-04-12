@@ -28,6 +28,8 @@ struct ContentView: View {
     @State var answer1Correct: Bool = false
     @State var answer2Correct: Bool = false
     
+    @State var errorMessage: String = ""
+    
     @State var pastAnswers: [Equation] = []
     
     //MARK: Computed properties
@@ -49,14 +51,19 @@ struct ContentView: View {
                     answersChecked = true
                     guard let factorTry1 = Int(factorGuess1) else {
                         answer1Correct = false
+                        answersChecked = false
+                        errorMessage = "Please put numbers in both fields."
                         return
                     }
                     guard let factorTry2 = Int(factorGuess2) else {
                         answer2Correct = false
+                        answersChecked = false
+                        errorMessage = "Please put numbers in both fields."
                         return
                     }
                     if factorTry1 == factorR {
                         answer1Correct = true
+                        errorMessage = ""
                         if factorTry2 == factorS {
                             answer2Correct = true
                         } else {
@@ -64,6 +71,7 @@ struct ContentView: View {
                         }
                     } else if factorTry1 == factorS {
                         answer1Correct = true
+                        errorMessage = ""
                         if factorTry2 == factorR {
                             answer2Correct = true
                         } else {
@@ -71,6 +79,7 @@ struct ContentView: View {
                         }
                     } else {
                         answer1Correct = false
+                        errorMessage = ""
                         if factorTry2 == factorR {
                             answer2Correct = true
                         } else if factorTry2 == factorS {
@@ -80,7 +89,7 @@ struct ContentView: View {
                         }
                     }
                 }, label: {
-                    
+                    Text("Check answers")
                 })
             }
         }
