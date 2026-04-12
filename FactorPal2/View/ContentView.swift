@@ -90,7 +90,26 @@ struct ContentView: View {
                     }
                 }, label: {
                     Text("Check answers")
+                        .background(Color.blue, in: Capsule())
                 })
+                    .opacity(answersChecked == false ? 1.0 : 0.0)
+                    .padding()
+                Button(action: {
+                    factorR = Int.random(in: 1...6)
+                    factorS = Int.random(in: 1...6)
+                    
+                    factorGuess1 = ""
+                    factorGuess2 = ""
+                    
+                    answersChecked = false
+                    answer1Correct = false
+                    answer2Correct = false
+                }, label: {
+                    Text("Next question")
+                        .background(Color.blue, in: Capsule())
+                })
+                    .opacity(answersChecked == true ? 1.0 : 0.0)
+                    .padding()
             }
         }
     }
