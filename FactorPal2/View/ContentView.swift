@@ -39,19 +39,44 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Factor:")
-                .multilineTextAlignment(.leading)
-                .font(Font.system(size: 26))
-            LaTeX("$x^2+\(coefficientB)x+\(constantC)$")
             HStack {
+                Text(" Factor:")
+                    .font(Font.system(size: 26))
+                Spacer()
+            }
+            
+            LaTeX("$x^2+\(coefficientB)x+\(constantC)$")
+                .font(Font.system(size: 40))
+            Text("\(errorMessage)")
+                .font(Font.system(size: 10))
+            HStack(alignment: .top, spacing: 0) {
                 Text("(x+")
-                TextField("", text: $factorGuess1)
-                    .frame(width: 20)
+                VStack {
+                    TextField("", text: $factorGuess1)
+                        .frame(width: 20)
+                        .textFieldStyle(.roundedBorder)
+                    ZStack {
+                        Image(systemName: "checkmark.circle")
+                            .opacity(answer1Correct == true ? 1.0 : 0.0)
+                        Image(systemName: "x.circle")
+                            .opacity(answer1Correct == false && answersChecked == true ? 1.0 : 0.0)
+                    }
+                }
                 Text(")(x+")
-                TextField("", text: $factorGuess2)
+                VStack {
+                    TextField("", text: $factorGuess2)
+                        .frame(width: 20)
+                        .textFieldStyle(.roundedBorder)
+                    ZStack {
+                        Image(systemName: "checkmark.circle")
+                            .opacity(answer2Correct == true ? 1.0 : 0.0)
+                        Image(systemName: "x.circle")
+                            .opacity(answer2Correct == false && answersChecked == true ? 1.0 : 0.0)
+                    }
+                }
                 Text(")")
             }
-            ZStack {
+            ZStack(alignment: .trailing) {
                 Button(action: {
                     guard let factorTry1 = Int(factorGuess1) else {
                         answer1Correct = false
@@ -97,10 +122,11 @@ struct ContentView: View {
                     saveAttempt()
                 }, label: {
                     Text("Check answers")
+                        .foregroundStyle(.white)
                         .background(Color.blue, in: Capsule())
                 })
-                    .opacity(answersChecked == false ? 1.0 : 0.0)
-                    .padding()
+                .opacity(answersChecked == false ? 1.0 : 0.0)
+                .padding()
                 Button(action: {
                     factorR = Int.random(in: 1...6)
                     factorS = Int.random(in: 1...6)
@@ -113,10 +139,11 @@ struct ContentView: View {
                     answer2Correct = false
                 }, label: {
                     Text("Next question")
+                        .foregroundStyle(.white)
                         .background(Color.blue, in: Capsule())
                 })
-                    .opacity(answersChecked == true ? 1.0 : 0.0)
-                    .padding()
+                .opacity(answersChecked == true ? 1.0 : 0.0)
+                .padding()
             }
         }
     }

@@ -11,7 +11,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2E718B0B2F8AAD6900E5EA86 /* FactorPal2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FactorPal2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E718B0B2F8AAD6900E5EA86 /* FactorPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FactorPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -45,7 +45,7 @@
 		2E718B0C2F8AAD6900E5EA86 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2E718B0B2F8AAD6900E5EA86 /* FactorPal2.app */,
+				2E718B0B2F8AAD6900E5EA86 /* FactorPal.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -53,9 +53,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2E718B0A2F8AAD6900E5EA86 /* FactorPal2 */ = {
+		2E718B0A2F8AAD6900E5EA86 /* FactorPal */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2E718B162F8AAD6C00E5EA86 /* Build configuration list for PBXNativeTarget "FactorPal2" */;
+			buildConfigurationList = 2E718B162F8AAD6C00E5EA86 /* Build configuration list for PBXNativeTarget "FactorPal" */;
 			buildPhases = (
 				2E718B072F8AAD6900E5EA86 /* Sources */,
 				2E718B082F8AAD6900E5EA86 /* Frameworks */,
@@ -68,12 +68,12 @@
 			fileSystemSynchronizedGroups = (
 				2E718B0D2F8AAD6900E5EA86 /* FactorPal2 */,
 			);
-			name = FactorPal2;
+			name = FactorPal;
 			packageProductDependencies = (
 				2E718B1A2F8AADA900E5EA86 /* LaTeXSwiftUI */,
 			);
 			productName = FactorPal2;
-			productReference = 2E718B0B2F8AAD6900E5EA86 /* FactorPal2.app */;
+			productReference = 2E718B0B2F8AAD6900E5EA86 /* FactorPal.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -91,7 +91,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2E718B062F8AAD6900E5EA86 /* Build configuration list for PBXProject "FactorPal2" */;
+			buildConfigurationList = 2E718B062F8AAD6900E5EA86 /* Build configuration list for PBXProject "FactorPal" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -108,7 +108,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2E718B0A2F8AAD6900E5EA86 /* FactorPal2 */,
+				2E718B0A2F8AAD6900E5EA86 /* FactorPal */,
 			);
 		};
 /* End PBXProject section */
@@ -324,7 +324,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2E718B062F8AAD6900E5EA86 /* Build configuration list for PBXProject "FactorPal2" */ = {
+		2E718B062F8AAD6900E5EA86 /* Build configuration list for PBXProject "FactorPal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2E718B142F8AAD6C00E5EA86 /* Debug */,
@@ -333,7 +333,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2E718B162F8AAD6C00E5EA86 /* Build configuration list for PBXNativeTarget "FactorPal2" */ = {
+		2E718B162F8AAD6C00E5EA86 /* Build configuration list for PBXNativeTarget "FactorPal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2E718B172F8AAD6C00E5EA86 /* Debug */,
