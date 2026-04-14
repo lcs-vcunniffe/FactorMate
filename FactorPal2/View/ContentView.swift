@@ -40,42 +40,53 @@ struct ContentView: View {
     var body: some View {
         VStack {
             HStack {
-                Text(" Factor:")
+                Text("Factor:")
                     .font(Font.system(size: 26))
                 Spacer()
             }
+            .padding()
             
             LaTeX("$x^2+\(coefficientB)x+\(constantC)$")
-                .font(Font.system(size: 40))
-            Text("\(errorMessage)")
-                .font(Font.system(size: 10))
+                .font(UIFont.systemFont(ofSize: 40))
+            
             HStack(alignment: .top, spacing: 0) {
-                Text("(x+")
+                LaTeX("(x+")
+                    .font(UIFont.systemFont(ofSize: 50))
                 VStack {
                     TextField("", text: $factorGuess1)
-                        .frame(width: 20)
+                        .font(Font.system(size: 50))
+                        .frame(width: 45)
                         .textFieldStyle(.roundedBorder)
                     ZStack {
                         Image(systemName: "checkmark.circle")
+                            .foregroundStyle(.green)
                             .opacity(answer1Correct == true ? 1.0 : 0.0)
                         Image(systemName: "x.circle")
+                            .foregroundStyle(.red)
                             .opacity(answer1Correct == false && answersChecked == true ? 1.0 : 0.0)
                     }
                 }
-                Text(")(x+")
+                LaTeX("$)(x+$")
+                    .font(UIFont.systemFont(ofSize: 50))
                 VStack {
                     TextField("", text: $factorGuess2)
-                        .frame(width: 20)
+                        .font(Font.system(size: 50))
+                        .frame(width: 45)
                         .textFieldStyle(.roundedBorder)
                     ZStack {
                         Image(systemName: "checkmark.circle")
+                            .foregroundStyle(.green)
                             .opacity(answer2Correct == true ? 1.0 : 0.0)
                         Image(systemName: "x.circle")
+                            .foregroundStyle(.red)
                             .opacity(answer2Correct == false && answersChecked == true ? 1.0 : 0.0)
                     }
                 }
-                Text(")")
+                LaTeX(")")
+                    .font(UIFont.systemFont(ofSize: 50))
             }
+            Text("\(errorMessage)")
+                .font(Font.system(size: 10))
             ZStack(alignment: .trailing) {
                 Button(action: {
                     guard let factorTry1 = Int(factorGuess1) else {
@@ -122,11 +133,12 @@ struct ContentView: View {
                     saveAttempt()
                 }, label: {
                     Text("Check answers")
+                        .padding()
                         .foregroundStyle(.white)
                         .background(Color.blue, in: Capsule())
                 })
                 .opacity(answersChecked == false ? 1.0 : 0.0)
-                .padding()
+                
                 Button(action: {
                     factorR = Int.random(in: 1...6)
                     factorS = Int.random(in: 1...6)
@@ -139,11 +151,11 @@ struct ContentView: View {
                     answer2Correct = false
                 }, label: {
                     Text("Next question")
+                        .padding()
                         .foregroundStyle(.white)
                         .background(Color.blue, in: Capsule())
                 })
                 .opacity(answersChecked == true ? 1.0 : 0.0)
-                .padding()
             }
         }
     }
