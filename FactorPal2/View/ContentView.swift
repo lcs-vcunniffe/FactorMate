@@ -16,13 +16,6 @@ struct ContentView: View {
     @State var factorR = Int.random(in: 1...6)
     @State var factorS = Int.random(in: 1...6)
     
-    var coefficientB: Int {
-        return factorR + factorS
-    }
-    var constantC: Int {
-        return factorR * factorS
-    }
-    
     @State var answersChecked: Bool = false
     
     @State var answer1Correct: Bool = false
@@ -37,6 +30,13 @@ struct ContentView: View {
     //MARK: Computed properties
     var overallResponseCorrect: Bool {
         return answer1Correct && answer2Correct
+    }
+    
+    var coefficientB: Int {
+        return factorR + factorS
+    }
+    var constantC: Int {
+        return factorR * factorS
     }
     
     var body: some View {
@@ -87,7 +87,7 @@ struct ContentView: View {
                 LaTeX(")")
                     .font(UIFont.systemFont(ofSize: 50))
             }
-            Text("\(errorMessage)")
+            Text(errorMessage)
                 .font(Font.system(size: 10))
             ZStack(alignment: .trailing) {
                 Button(action: {
@@ -158,13 +158,13 @@ struct ContentView: View {
                         .background(Color.blue, in: Capsule())
                 })
                 .opacity(answersChecked == true ? 1.0 : 0.0)
-                Picker("Filter", selection: $selectedAttemptsToShow) {
-                    Text("All").tag(0)
-                    Text("Correct").tag(1)
-                    Text("Incorrect").tag(2)
-                }
-                .pickerStyle(.segmented)
             }
+            Picker("Filter", selection: $selectedAttemptsToShow) {
+                Text("All").tag(0)
+                Text("Correct").tag(1)
+                Text("Incorrect").tag(2)
+            }
+            .pickerStyle(.segmented)
         }
     }
     
