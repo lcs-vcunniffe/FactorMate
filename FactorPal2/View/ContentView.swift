@@ -30,7 +30,9 @@ struct ContentView: View {
     
     @State var errorMessage: String = ""
     
-    @State var pastAnswers: [Equation] = []
+    @State var pastAttempts: [Equation] = []
+    
+    @State private var selectedAttemptsToShow: Int = 0
     
     //MARK: Computed properties
     var overallResponseCorrect: Bool {
@@ -156,6 +158,12 @@ struct ContentView: View {
                         .background(Color.blue, in: Capsule())
                 })
                 .opacity(answersChecked == true ? 1.0 : 0.0)
+                Picker("Filter", selection: $selectedAttemptsToShow) {
+                    Text("All").tag(0)
+                    Text("Correct").tag(1)
+                    Text("Incorrect").tag(2)
+                }
+                .pickerStyle(.segmented)
             }
         }
     }
@@ -169,7 +177,23 @@ struct ContentView: View {
             factorGuess2: factorGuess2,
             answersCorrect: overallResponseCorrect
         )
-        pastAnswers.insert(lastAttempt, at: 0)
+        pastAttempts.insert(lastAttempt, at: 0)
+    }
+    func filter(_ pastAttempts: [Equation], by showingAttempts: Int) -> [Equation] {
+        if selectedAttemptsToShow == 0 {
+            return pastAttempts
+        } else {
+            var filteredAttempts: [Equation] = []
+            
+            for currentAttempt in pastAttempts {
+                if showingAttempts == 1 && currentAttempt.answersCorrect == true {
+                    filteredAttempts.insert(currentAttempt, at: 0)
+                } else if showingAttempts == 2 && currentAttempt.answersCorrect == false {
+                    filteredAttempts.insert(currentAttempt, at: 0)
+                }
+            }
+            return filteredAttempts
+        }
     }
 }
 
