@@ -170,7 +170,26 @@ struct ContentView: View {
             List(filterAttempts(pastAttempts, by: selectedAttemptsToShow)) {pastAttempt in
                 VStack(spacing: 0) {
                     HStack {
-                        
+                        LaTeX("$x^2+\(pastAttempt.coefficientB)x+\(pastAttempt.constantC) =$")
+                        LaTeX("$(x+\(pastAttempt.factorR))(x+\(pastAttempt.factorS))$").underline()
+                        Spacer()
+                        ZStack {
+                            Image(systemName: "checkmark.circle")
+                                .foregroundStyle(.green)
+                                .opacity(pastAttempt.answersCorrect == true ? 1.0 : 0.0)
+                            Image(systemName: "x.circle")
+                                .foregroundStyle(.red)
+                                .opacity(pastAttempt.answer1Correct == false && pastAttempt.answer2Correct == false ? 1.0 : 0.0)
+                            Image(systemName: "exclamationmark.circle")
+                                .foregroundStyle(.yellow)
+                                .opacity(pastAttempt.answer1Correct != pastAttempt.answer2Correct ? 1.0 : 0.0)
+                        }
+                    }
+                    HStack {
+                        Text("Your guess: (x+\(pastAttempt.factorGuess1))(x+\(pastAttempt.factorGuess2))")
+                            .italic()
+                            .foregroundStyle(.gray)
+                        Spacer()
                     }
                 }
             }
