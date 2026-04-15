@@ -1,17 +1,9 @@
 //
 //  Equation.swift
-//  FactorPal2
-//
-//  Created by Veda Niav Cunniffe on 2026-04-11.
-//
-
-import Foundation
-
-//
-//  Equation.swift
 //  FactorPal
 //
-//  Created by Veda Niav Cunniffe on 2026-04-10.
+//  Created by Veda Niav Cunniffe on 2026-04-11.
+//  Debugged with assistance from ChatGPT – reminded me to make the Equation struct identifiable
 //
 
 import Foundation

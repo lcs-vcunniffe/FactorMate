@@ -3,6 +3,7 @@
 //  FactorPal
 //
 //  Created by Veda Niav Cunniffe on 2026-04-10.
+//  Malfunctioning coding segments involving LaTeX debugged with ChatGPT.
 //
 
 import SwiftUI
@@ -49,7 +50,7 @@ struct ContentView: View {
             
             LaTeX("$x^2+\(coefficientB)x+\(constantC)$")
                 .font(UIFont.systemFont(ofSize: 40))
-                .id(problemID)
+                .id(problemID) //ChatGPT suggestion to ensure Swift knows to update the LaTeX
             
             HStack(alignment: .top, spacing: 0) {
                 LaTeX("$(x+$")
@@ -91,7 +92,6 @@ struct ContentView: View {
             }
             Text(errorMessage)
                 .font(Font.system(size: 15))
-            
             ZStack() {
                 Button(action: {
                     guard let factorTry1 = Int(factorGuess1) else {
