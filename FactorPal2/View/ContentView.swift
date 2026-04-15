@@ -77,9 +77,11 @@ struct ContentView: View {
                         .textFieldStyle(.roundedBorder)
                     ZStack {
                         Image(systemName: "checkmark.circle")
+                            .font(.system(size: 35))
                             .foregroundStyle(.green)
                             .opacity(answer2Correct == true ? 1.0 : 0.0)
                         Image(systemName: "x.circle")
+                            .font(.system(size: 35))
                             .foregroundStyle(.red)
                             .opacity(answer2Correct == false && answersChecked == true ? 1.0 : 0.0)
                     }
@@ -88,8 +90,9 @@ struct ContentView: View {
                     .font(UIFont.systemFont(ofSize: 50))
             }
             Text(errorMessage)
-                .font(Font.system(size: 10))
-            ZStack(alignment: .trailing) {
+                .font(Font.system(size: 15))
+            
+            ZStack() {
                 Button(action: {
                     guard let factorTry1 = Int(factorGuess1) else {
                         answer1Correct = false
@@ -161,6 +164,7 @@ struct ContentView: View {
                 })
                 .opacity(answersChecked == true ? 1.0 : 0.0)
             }
+            .padding()
             Picker("Filter", selection: $selectedAttemptsToShow) {
                 Text("All").tag(0)
                 Text("Correct").tag(1)
@@ -168,7 +172,7 @@ struct ContentView: View {
             }
             .pickerStyle(.segmented)
             List(filterAttempts(pastAttempts, by: selectedAttemptsToShow)) {pastAttempt in
-                VStack(spacing: 0) {
+                VStack(spacing: 5) {
                     HStack {
                         LaTeX("$x^2+\(pastAttempt.coefficientB)x+\(pastAttempt.constantC) =$")
                         LaTeX("$(x+\(pastAttempt.factorR))(x+\(pastAttempt.factorS))$").underline()
@@ -193,6 +197,7 @@ struct ContentView: View {
                     }
                 }
             }
+            .backgroundStyle(.secondary)
         }
     }
     
