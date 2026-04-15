@@ -30,9 +30,6 @@ struct ContentView: View {
     @State private var selectedAttemptsToShow: Int = 0
     
     //MARK: Computed properties
-    var overallResponseCorrect: Bool {
-        return answer1Correct && answer2Correct
-    }
     
     var coefficientB: Int {
         return factorR + factorS
@@ -187,7 +184,8 @@ struct ContentView: View {
             factorS: factorS,
             factorGuess1: factorGuess1,
             factorGuess2: factorGuess2,
-            answersCorrect: overallResponseCorrect
+            answer1Correct: answer1Correct,
+            answer2Correct: answer2Correct
         )
         pastAttempts.insert(lastAttempt, at: 0)
     }

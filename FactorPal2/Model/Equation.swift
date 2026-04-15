@@ -22,8 +22,12 @@ struct Equation: Identifiable {
     var factorS: Int
     var factorGuess1: String
     var factorGuess2: String
-    var answersCorrect: Bool
+    var answer1Correct: Bool
+    var answer2Correct: Bool
     
+    var answersCorrect: Bool {
+        return answer1Correct && answer2Correct
+    }
     var coefficientB: Int {
         return factorR + factorS
     }
