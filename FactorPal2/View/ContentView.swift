@@ -50,7 +50,7 @@ struct ContentView: View {
             
             LaTeX("$x^2+\(coefficientB)x+\(constantC)$")
                 .font(UIFont.systemFont(ofSize: 40))
-                .id(problemID) //ChatGPT suggestion to ensure Swift knows to update the LaTeX
+                .id(problemID) // ChatGPT suggestion to ensure Swift updates the LaTeX equation
             
             HStack(alignment: .top, spacing: 0) {
                 LaTeX("$(x+$")
@@ -151,7 +151,7 @@ struct ContentView: View {
                     factorGuess1 = ""
                     factorGuess2 = ""
                     
-                    problemID += 1
+                    problemID += 1 // Updating the ID of the problem so Swift knows to update the LaTeX
                     
                     answersChecked = false
                     answer1Correct = false
