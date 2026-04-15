@@ -170,6 +170,13 @@ struct ContentView: View {
                 Text("Incorrect").tag(2)
             }
             .pickerStyle(.segmented)
+            List(filterAttempts(pastAttempts, by: selectedAttemptsToShow)) {pastAttempt in
+                VStack(spacing: 0) {
+                    HStack {
+                        
+                    }
+                }
+            }
         }
     }
     
@@ -184,13 +191,13 @@ struct ContentView: View {
         )
         pastAttempts.insert(lastAttempt, at: 0)
     }
-    func filter(_ pastAttempts: [Equation], by showingAttempts: Int) -> [Equation] {
+    func filterAttempts(_ listedAttempts: [Equation], by showingAttempts: Int) -> [Equation] {
         if selectedAttemptsToShow == 0 {
-            return pastAttempts
+            return listedAttempts
         } else {
             var filteredAttempts: [Equation] = []
             
-            for currentAttempt in pastAttempts {
+            for currentAttempt in listedAttempts {
                 if showingAttempts == 1 && currentAttempt.answersCorrect == true {
                     filteredAttempts.insert(currentAttempt, at: 0)
                 } else if showingAttempts == 2 && currentAttempt.answersCorrect == false {

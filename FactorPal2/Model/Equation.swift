@@ -16,7 +16,7 @@ import Foundation
 
 import Foundation
 
-struct Equation {
+struct Equation: Identifiable {
     let id = UUID()
     var factorR: Int
     var factorS: Int
