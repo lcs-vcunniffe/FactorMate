@@ -23,6 +23,8 @@ struct ContentView: View {
     
     @State var errorMessage: String = ""
     
+    @State var problemID: Int = 0
+    
     @State var pastAttempts: [Equation] = []
     
     @State private var selectedAttemptsToShow: Int = 0
@@ -50,9 +52,10 @@ struct ContentView: View {
             
             LaTeX("$x^2+\(coefficientB)x+\(constantC)$")
                 .font(UIFont.systemFont(ofSize: 40))
+                .id(problemID)
             
             HStack(alignment: .top, spacing: 0) {
-                LaTeX("(x+")
+                LaTeX("$(x+$")
                     .font(UIFont.systemFont(ofSize: 50))
                 VStack {
                     TextField("", text: $factorGuess1)
@@ -84,7 +87,7 @@ struct ContentView: View {
                             .opacity(answer2Correct == false && answersChecked == true ? 1.0 : 0.0)
                     }
                 }
-                LaTeX(")")
+                LaTeX("$)$")
                     .font(UIFont.systemFont(ofSize: 50))
             }
             Text(errorMessage)
@@ -147,6 +150,8 @@ struct ContentView: View {
                     
                     factorGuess1 = ""
                     factorGuess2 = ""
+                    
+                    problemID += 1
                     
                     answersChecked = false
                     answer1Correct = false
